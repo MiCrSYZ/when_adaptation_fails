@@ -1,0 +1,41 @@
+DATALOADER:
+  TRAIN_X:
+    BATCH_SIZE: 4
+  TEST:
+    BATCH_SIZE: 100
+  NUM_WORKERS: 8
+
+INPUT:
+  SIZE: (224, 224)
+  INTERPOLATION: "bicubic"
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  TRANSFORMS: ["random_resized_crop", "random_flip", "normalize"]
+
+OPTIM:
+  NAME: "sgd"
+  LR: 0.0035
+  MAX_EPOCH: 10  # 增加训练轮数以充分训练adaptive参数
+  LR_SCHEDULER: "cosine"
+  WARMUP_EPOCH: 1
+  WARMUP_TYPE: "constant"
+  WARMUP_CONS_LR: 1e-5
+
+TRAIN:
+  PRINT_FREQ: 20
+
+MODEL:
+  BACKBONE:
+    NAME: "ViT-B/16"
+
+TRAINER:
+  ADAPTIVE_MAPLE:
+    N_CTX_MAX: 8  # 最大prompt长度
+    CTX_INIT: "a photo of a"
+    PREC: "fp16"
+    PROMPT_DEPTH_MAX: 12  # 最大插入深度
+    LAMBDA_SPARSITY: 0.01  # 稀疏性正则化权重
+    LAMBDA_DEPTH_SMOOTH: 0.001  # 深度平滑约束权重
+    TYPE: "full"  # "full":全自适应, "length_only":仅长度, "depth_only":仅深度
+    FIXED_N_CTX: 4
+    FIXED_PROMPT_DEPTH: 6
