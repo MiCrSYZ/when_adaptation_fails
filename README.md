@@ -5,6 +5,8 @@ Official implementation for:
 **When Adaptation Fails: A Gradient-Based Diagnosis of Collapsed Gating in Vision-Language Prompt Learning**  
 ICME 2026
 
+Paper: https://arxiv.org/abs/2605.09549
+
 ## Overview
 
 This repository contains the code for our diagnostic study of adaptive gating in CLIP-based prompt learning.
