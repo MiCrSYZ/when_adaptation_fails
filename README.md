@@ -1,5 +1,9 @@
 # When Adaptation Fails
 
+<p align="center">
+  <img src="assets/cat-universe-cover.png" alt="When Adaptive AI Stops Adapting — visual overview" width="100%">
+</p>
+
 Official implementation for:
 
 **When Adaptation Fails: A Gradient-Based Diagnosis of Collapsed Gating in Vision-Language Prompt Learning**  
